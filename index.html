@@ -7,6 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <link rel="icon" type="image/png" href="favicon.png"> <!-- إضافة Favicon هنا -->
   <style>
     * {
       box-sizing: border-box;
@@ -180,7 +181,7 @@
   <div class="header">
     <h1>الخطة الدراسية للثانوية العامة – الفرع العلمي</h1>
     <p>"نحو التميّز بخطى ثابتة وإصرار مستمر"</p>
-    <div class="student-name">إعداد الطالب: <strong> اسامة الطوالبة</strong></div>
+    <div class="student-name">إعداد الطالب: <strong>اسامة الطوالبة</strong></div>
   </div>
 
   <div id="study-schedule">
@@ -259,11 +260,4 @@
         const pdfWidth = pdf.internal.pageSize.getWidth();
         const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
 
-        pdf.addImage(imgData, "PNG", 10, 10, pdfWidth - 20, pdfHeight);
-        pdf.save("جدولي_الدراسي.pdf");
-      });
-    }
-  </script>
-
-</body>
-</html>
+        pdf.addImage(imgData, "PNG", 10
