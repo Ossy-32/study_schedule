@@ -147,6 +147,35 @@
       color: #fff;
     }
 
+    /* Tooltip */
+    .tooltip {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .tooltip .tooltiptext {
+      visibility: hidden;
+      width: 160px;
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 6px;
+      position: absolute;
+      z-index: 1;
+      bottom: 125%;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .tooltip:hover .tooltiptext {
+      visibility: visible;
+      opacity: 1;
+    }
+
     @media (max-width: 600px) {
       .header h1 {
         font-size: 22px;
@@ -190,38 +219,38 @@
       <tbody>
         <tr>
           <td>الجمعة</td>
-          <td><span class="material-icon">📐</span> الرياضيات</td>
-          <td><span class="material-icon">🔬</span> الفيزياء</td>
+          <td><span class="tooltip"><span class="material-icon">📐</span> الرياضيات<span class="tooltiptext">الرياضيات - مستوى متقدم</span></span></td>
+          <td><span class="tooltip"><span class="material-icon">🔬</span> الفيزياء<span class="tooltiptext">الفيزياء - تطبيقات أساسية</span></span></td>
         </tr>
         <tr>
           <td>السبت</td>
-          <td><span class="material-icon">⚗️</span> الكيمياء</td>
-          <td><span class="material-icon">🧬</span> الأحياء</td>
+          <td><span class="tooltip"><span class="material-icon">⚗️</span> الكيمياء<span class="tooltiptext">الكيمياء - تفاعلات ومعادلات</span></span></td>
+          <td><span class="tooltip"><span class="material-icon">🧬</span> الأحياء<span class="tooltiptext">الأحياء - الوحدة الأولى</span></span></td>
         </tr>
         <tr>
           <td>الأحد</td>
-          <td><span class="material-icon">📖</span> اللغة العربية</td>
-          <td><span class="material-icon">📐</span> الرياضيات</td>
+          <td><span class="tooltip"><span class="material-icon">📖</span> اللغة العربية<span class="tooltiptext">اللغة العربية - مهارات القواعد</span></span></td>
+          <td><span class="tooltip"><span class="material-icon">📐</span> الرياضيات<span class="tooltiptext">الرياضيات - مراجعة تكامل</span></span></td>
         </tr>
         <tr>
           <td>الاثنين</td>
-          <td><span class="material-icon">🔬</span> الفيزياء</td>
-          <td><span class="material-icon">📚</span> اللغة الإنجليزية</td>
+          <td><span class="tooltip"><span class="material-icon">🔬</span> الفيزياء<span class="tooltiptext">الفيزياء - الدرس الثاني</span></span></td>
+          <td><span class="tooltip"><span class="material-icon">📚</span> اللغة الإنجليزية<span class="tooltiptext">اللغة الإنجليزية - نصوص وقواعد</span></span></td>
         </tr>
         <tr>
           <td>الثلاثاء</td>
-          <td><span class="material-icon">⚗️</span> الكيمياء</td>
-          <td><span class="material-icon">📖</span> اللغة العربية</td>
+          <td><span class="tooltip"><span class="material-icon">⚗️</span> الكيمياء<span class="tooltiptext">الكيمياء - مسائل حسابية</span></span></td>
+          <td><span class="tooltip"><span class="material-icon">📖</span> اللغة العربية<span class="tooltiptext">اللغة العربية - نصوص الأدب</span></span></td>
         </tr>
         <tr>
           <td>الأربعاء</td>
-          <td><span class="material-icon">🔁</span> مراجعة عامة</td>
-          <td><span class="material-icon">✅</span> اختبار ذاتي</td>
+          <td><span class="tooltip"><span class="material-icon">🔁</span> مراجعة عامة<span class="tooltiptext">مراجعة شاملة للمحتوى الأسبوعي</span></span></td>
+          <td><span class="tooltip"><span class="material-icon">✅</span> اختبار ذاتي<span class="tooltiptext">اختبر نفسك - تدريبات نهائية</span></span></td>
         </tr>
         <tr>
           <td>الخميس</td>
-          <td><span class="material-icon">🏛️</span> تاريخ الأردن</td>
-          <td><span class="material-icon">🕌</span> التربية الإسلامية</td>
+          <td><span class="tooltip"><span class="material-icon">🏛️</span> تاريخ الأردن<span class="tooltiptext">الوحدة الأولى والثانية</span></span></td>
+          <td><span class="tooltip"><span class="material-icon">🕌</span> التربية الإسلامية<span class="tooltiptext">الفقه والسيرة</span></span></td>
         </tr>
       </tbody>
     </table>
