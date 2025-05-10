@@ -2,66 +2,69 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>الخطة الدراسية - توجيهي علمي</title>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: 'Tajawal', sans-serif;
       background: linear-gradient(to bottom right, #e0ecff, #f8f1ff);
       color: #333;
+      transition: background 0.3s, color 0.3s;
     }
 
     .header {
       text-align: center;
-      padding: 5% 5%;
+      padding: 30px 20px;
       background: linear-gradient(to left, #4e54c8, #8f94fb);
       color: white;
       border-bottom: 3px solid #fff;
     }
 
     .header h1 {
-      font-size: 4vw;
+      font-size: 28px;
       margin-bottom: 10px;
     }
 
     .header p {
-      font-size: 2vw;
+      font-size: 16px;
       font-style: italic;
       margin: 0;
     }
 
     .student-name {
-      font-size: 2.5vw;
-      margin-top: 15px;
+      font-size: 18px;
+      margin-top: 10px;
       font-weight: bold;
     }
 
     table {
-      width: 90%;
-      margin: 5% auto;
+      width: 95%;
+      margin: 20px auto;
       border-collapse: collapse;
       background: white;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
       overflow: hidden;
+      font-size: 16px;
+    }
+
+    th, td {
+      padding: 14px;
+      text-align: center;
     }
 
     th {
       background-color: #6a82fb;
       color: white;
-      font-size: 2vw;
-      padding: 16px;
-      text-align: center;
-    }
-
-    td {
-      padding: 18px;
-      font-size: 1.8vw;
-      text-align: center;
-      border-bottom: 1px solid #f0f0f0;
+      font-size: 18px;
     }
 
     tr:nth-child(even) {
@@ -74,31 +77,32 @@
 
     .footer {
       text-align: center;
-      margin: 3% auto;
-      font-size: 1.5vw;
-      color: #444;
+      margin: 25px 10px;
+      font-size: 15px;
+      color: #555;
     }
 
     .signature {
       text-align: center;
-      margin-bottom: 5%;
-      font-size: 1.5vw;
+      margin-bottom: 40px;
+      font-size: 15px;
     }
 
     .material-icon {
-      margin-left: 8px;
-      font-size: 1.8vw;
+      margin-left: 6px;
+      font-size: 18px;
       color: #6a82fb;
     }
 
     .button-container {
       text-align: center;
-      margin-top: 5%;
+      margin-top: 25px;
+      margin-bottom: 20px;
     }
 
     .action-button {
       padding: 10px 20px;
-      font-size: 1.5vw;
+      font-size: 15px;
       background-color: #6a82fb;
       color: white;
       border: none;
@@ -114,128 +118,57 @@
     .mode-toggle {
       background-color: #333;
       color: white;
-      padding: 10px 20px;
+      padding: 8px 16px;
       border: none;
-      border-radius: 5px;
+      border-radius: 6px;
       cursor: pointer;
-      font-size: 1.5vw;
-      position: absolute;
-      top: 20px;
-      left: 20px;
+      font-size: 14px;
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      z-index: 1000;
     }
 
     .mode-toggle:hover {
       background-color: #555;
     }
 
-    /* Dark Mode */
+    /* الوضع الليلي */
     body.dark-mode {
-      background: #333;
+      background: #222;
       color: #fff;
     }
 
     table.dark-mode {
-      background-color: #444;
+      background-color: #333;
     }
 
     th.dark-mode {
-      background-color: #222;
+      background-color: #111;
     }
 
     td.dark-mode {
-      background-color: #555;
+      background-color: #444;
+      color: #fff;
     }
 
-    /* Responsive Design */
-    @media (max-width: 768px) {
+    @media (max-width: 600px) {
       .header h1 {
-        font-size: 6vw;
+        font-size: 22px;
       }
 
-      .header p {
-        font-size: 3vw;
+      th, td {
+        font-size: 14px;
+        padding: 10px;
+      }
+
+      .action-button, .mode-toggle {
+        font-size: 13px;
+        padding: 8px 14px;
       }
 
       .student-name {
-        font-size: 4vw;
-      }
-
-      table {
-        width: 100%;
-      }
-
-      th {
-        font-size: 4vw;
-      }
-
-      td {
-        font-size: 3.5vw;
-      }
-
-      .footer {
-        font-size: 3vw;
-      }
-
-      .signature {
-        font-size: 3vw;
-      }
-
-      .material-icon {
-        font-size: 4vw;
-      }
-
-      .action-button {
-        font-size: 4vw;
-      }
-
-      .mode-toggle {
-        font-size: 3.5vw;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .header h1 {
-        font-size: 8vw;
-      }
-
-      .header p {
-        font-size: 4vw;
-      }
-
-      .student-name {
-        font-size: 5vw;
-      }
-
-      table {
-        width: 100%;
-      }
-
-      th {
-        font-size: 5vw;
-      }
-
-      td {
-        font-size: 4.5vw;
-      }
-
-      .footer {
-        font-size: 4vw;
-      }
-
-      .signature {
-        font-size: 4vw;
-      }
-
-      .material-icon {
-        font-size: 5vw;
-      }
-
-      .action-button {
-        font-size: 5vw;
-      }
-
-      .mode-toggle {
-        font-size: 4.5vw;
+        font-size: 16px;
       }
     }
   </style>
@@ -247,7 +180,7 @@
   <div class="header">
     <h1>الخطة الدراسية للثانوية العامة – الفرع العلمي</h1>
     <p>"نحو التميّز بخطى ثابتة وإصرار مستمر"</p>
-    <div class="student-name">إعداد الطالب: <strong>اسامة الطوالبة </strong></div>
+    <div class="student-name">إعداد الطالب: <strong>اسمك هنا</strong></div>
   </div>
 
   <div id="study-schedule">
@@ -307,18 +240,14 @@
   </div>
 
   <script>
-    // Toggle Dark Mode
     function toggleMode() {
       document.body.classList.toggle("dark-mode");
       const table = document.querySelector("table");
       table.classList.toggle("dark-mode");
-      const ths = document.querySelectorAll("th");
-      ths.forEach(th => th.classList.toggle("dark-mode"));
-      const tds = document.querySelectorAll("td");
-      tds.forEach(td => td.classList.toggle("dark-mode"));
+      document.querySelectorAll("th").forEach(th => th.classList.toggle("dark-mode"));
+      document.querySelectorAll("td").forEach(td => td.classList.toggle("dark-mode"));
     }
 
-    // Download the schedule as PDF
     async function downloadPDF() {
       const { jsPDF } = window.jspdf;
       const element = document.getElementById("study-schedule");
