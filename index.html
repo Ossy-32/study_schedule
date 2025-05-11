@@ -46,8 +46,14 @@
       font-weight: bold;
     }
 
+    .table-wrapper {
+      overflow-x: auto;
+      padding: 0 10px;
+    }
+
     table {
-      width: 95%;
+      width: 100%;
+      min-width: 500px;
       margin: 20px auto;
       border-collapse: collapse;
       background: white;
@@ -60,6 +66,7 @@
     th, td {
       padding: 14px;
       text-align: center;
+      white-space: nowrap;
     }
 
     th {
@@ -81,12 +88,6 @@
       margin: 25px 10px;
       font-size: 15px;
       color: #555;
-    }
-
-    .footer p {
-      margin: 0;
-      font-size: 14px;
-      color: #777;
     }
 
     .button-container {
@@ -115,11 +116,11 @@
       border: none;
       cursor: pointer;
       position: fixed;
-      top: 15px;
-      left: 15px;
+      top: 20px;
+      left: 20px;
       z-index: 1000;
-      width: 40px;
-      height: 40px;
+      width: 48px;
+      height: 48px;
       padding: 0;
       transition: transform 0.4s ease;
     }
@@ -209,7 +210,7 @@
         padding: 10px;
       }
 
-      .action-button, .mode-toggle {
+      .action-button {
         font-size: 13px;
         padding: 8px 14px;
       }
@@ -217,12 +218,19 @@
       .student-name {
         font-size: 16px;
       }
+
+      .mode-toggle {
+        width: 56px;
+        height: 56px;
+        top: 12px;
+        left: 12px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <button class="mode-toggle" onclick="toggleMode()" aria-label="Toggle dark mode">
+  <button class="mode-toggle" onclick="toggleMode()" aria-label="تبديل الوضع">
     <svg viewBox="0 0 24 24">
       <g class="sun">
         <circle cx="12" cy="12" r="5" fill="#facc15"/>
@@ -249,7 +257,7 @@
     <div class="student-name">إعداد الطالب: <strong>اسامة الطوالبة</strong></div>
   </div>
 
-  <div id="study-schedule">
+  <div class="table-wrapper" id="study-schedule">
     <table>
       <thead>
         <tr>
@@ -259,13 +267,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr><td>الجمعة</td><td><span class="tooltip"><span class="material-icon">📐</span> الرياضيات<span class="tooltiptext">الرياضيات - مستوى متقدم</span></span></td><td><span class="tooltip"><span class="material-icon">🔬</span> الفيزياء<span class="tooltiptext">الفيزياء - تطبيقات أساسية</span></span></td></tr>
-        <tr><td>السبت</td><td><span class="tooltip"><span class="material-icon">⚗️</span> الكيمياء<span class="tooltiptext">الكيمياء - تفاعلات ومعادلات</span></span></td><td><span class="tooltip"><span class="material-icon">🧬</span> الأحياء<span class="tooltiptext">الأحياء - الوحدة الأولى</span></span></td></tr>
-        <tr><td>الأحد</td><td><span class="tooltip"><span class="material-icon">📖</span> اللغة العربية<span class="tooltiptext">اللغة العربية - مهارات القواعد</span></span></td><td><span class="tooltip"><span class="material-icon">📐</span> الرياضيات<span class="tooltiptext">الرياضيات - مراجعة تكامل</span></span></td></tr>
-        <tr><td>الاثنين</td><td><span class="tooltip"><span class="material-icon">🔬</span> الفيزياء<span class="tooltiptext">الفيزياء - الدرس الثاني</span></span></td><td><span class="tooltip"><span class="material-icon">📚</span> اللغة الإنجليزية<span class="tooltiptext">اللغة الإنجليزية - نصوص وقواعد</span></span></td></tr>
-        <tr><td>الثلاثاء</td><td><span class="tooltip"><span class="material-icon">⚗️</span> الكيمياء<span class="tooltiptext">الكيمياء - مسائل حسابية</span></span></td><td><span class="tooltip"><span class="material-icon">📖</span> اللغة العربية<span class="tooltiptext">اللغة العربية - نصوص الأدب</span></span></td></tr>
-        <tr><td>الأربعاء</td><td><span class="tooltip"><span class="material-icon">🔁</span> مراجعة عامة<span class="tooltiptext">مراجعة شاملة للمحتوى الأسبوعي</span></span></td><td><span class="tooltip"><span class="material-icon">✅</span> اختبار ذاتي<span class="tooltiptext">اختبر نفسك - تدريبات نهائية</span></span></td></tr>
-        <tr><td>الخميس</td><td><span class="tooltip"><span class="material-icon">🏛️</span> تاريخ الأردن<span class="tooltiptext">الوحدة الأولى والثانية</span></span></td><td><span class="tooltip"><span class="material-icon">🕌</span> التربية الإسلامية<span class="tooltiptext">الفقه والسيرة</span></span></td></tr>
+        <tr><td>الجمعة</td><td><span class="tooltip">📐 الرياضيات<span class="tooltiptext">الرياضيات - مستوى متقدم</span></span></td><td><span class="tooltip">🔬 الفيزياء<span class="tooltiptext">الفيزياء - تطبيقات أساسية</span></span></td></tr>
+        <tr><td>السبت</td><td><span class="tooltip">⚗️ الكيمياء<span class="tooltiptext">الكيمياء - تفاعلات ومعادلات</span></span></td><td><span class="tooltip">🧬 الأحياء<span class="tooltiptext">الأحياء - الوحدة الأولى</span></span></td></tr>
+        <tr><td>الأحد</td><td><span class="tooltip">📖 اللغة العربية<span class="tooltiptext">اللغة العربية - مهارات القواعد</span></span></td><td><span class="tooltip">📐 الرياضيات<span class="tooltiptext">الرياضيات - مراجعة تكامل</span></span></td></tr>
+        <tr><td>الاثنين</td><td><span class="tooltip">🔬 الفيزياء<span class="tooltiptext">الفيزياء - الدرس الثاني</span></span></td><td><span class="tooltip">📚 اللغة الإنجليزية<span class="tooltiptext">اللغة الإنجليزية - نصوص وقواعد</span></span></td></tr>
+        <tr><td>الثلاثاء</td><td><span class="tooltip">⚗️ الكيمياء<span class="tooltiptext">الكيمياء - مسائل حسابية</span></span></td><td><span class="tooltip">📖 اللغة العربية<span class="tooltiptext">اللغة العربية - نصوص الأدب</span></span></td></tr>
+        <tr><td>الأربعاء</td><td><span class="tooltip">🔁 مراجعة عامة<span class="tooltiptext">مراجعة شاملة للمحتوى الأسبوعي</span></span></td><td><span class="tooltip">✅ اختبار ذاتي<span class="tooltiptext">اختبر نفسك - تدريبات نهائية</span></span></td></tr>
+        <tr><td>الخميس</td><td><span class="tooltip">🏛️ تاريخ الأردن<span class="tooltiptext">الوحدة الأولى والثانية</span></span></td><td><span class="tooltip">🕌 التربية الإسلامية<span class="tooltiptext">الفقه والسيرة</span></span></td></tr>
       </tbody>
     </table>
   </div>
@@ -279,10 +287,9 @@
   </div>
 
   <script>
-    window.toggleMode = function () {
+    function toggleMode() {
       document.body.classList.toggle("dark-mode");
-      const table = document.querySelector("table");
-      table.classList.toggle("dark-mode");
+      document.querySelector("table").classList.toggle("dark-mode");
       document.querySelectorAll("th").forEach(th => th.classList.toggle("dark-mode"));
       document.querySelectorAll("td").forEach(td => td.classList.toggle("dark-mode"));
     }
