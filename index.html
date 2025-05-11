@@ -119,12 +119,12 @@
       top: 15px;
       left: 15px;
       z-index: 1000;
-      width: 7vw;  /* تغيير الحجم ليكون نسبي */
-      height: 7vw;
-      max-width: 60px; /* تحديد أقصى عرض */
-      max-height: 60px; /* تحديد أقصى ارتفاع */
       padding: 0;
       transition: transform 0.4s ease;
+      width: 10vw;  /* الحجم النسبي للموبايل */
+      height: 10vw;
+      max-width: 60px; /* الحد الأقصى لحجم الزر */
+      max-height: 60px; /* الحد الأقصى لحجم الزر */
     }
 
     .mode-toggle:active {
@@ -222,10 +222,10 @@
       }
 
       .mode-toggle {
-        width: 10vw;  /* تغيير الحجم على الأجهزة الصغيرة */
-        height: 10vw;
-        max-width: 50px; /* الحد الأقصى للحجم */
-        max-height: 50px; /* الحد الأقصى للحجم */
+        width: 12vw;  /* حجم أكبر للأجهزة الصغيرة */
+        height: 12vw;
+        max-width: 50px; /* الحد الأقصى */
+        max-height: 50px; /* الحد الأقصى */
       }
     }
   </style>
@@ -315,7 +315,3 @@
   </script>
 </body>
 </html>
-
-
-
-
