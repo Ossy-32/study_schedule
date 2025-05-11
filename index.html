@@ -46,14 +46,8 @@
       font-weight: bold;
     }
 
-    .table-wrapper {
-      overflow-x: auto;
-      padding: 0 10px;
-    }
-
     table {
-      width: 100%;
-      min-width: 500px;
+      width: 95%;
       margin: 20px auto;
       border-collapse: collapse;
       background: white;
@@ -66,7 +60,6 @@
     th, td {
       padding: 14px;
       text-align: center;
-      white-space: nowrap;
     }
 
     th {
@@ -88,6 +81,12 @@
       margin: 25px 10px;
       font-size: 15px;
       color: #555;
+    }
+
+    .footer p {
+      margin: 0;
+      font-size: 14px;
+      color: #777;
     }
 
     .button-container {
@@ -112,44 +111,31 @@
     }
 
     .mode-toggle {
+      position: fixed;  /* يبقي الزر ثابت في مكانه عند التمرير */
+      top: 20px;  /* المسافة من أعلى الصفحة */
+      left: 20px; /* المسافة من الجهة اليسرى */
+      width: 50px; /* حجم الزر */
+      height: 50px; /* حجم الزر */
       background: none;
       border: none;
-      cursor: pointer;
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      z-index: 1000;
-      width: 48px;
-      height: 48px;
       padding: 0;
-      transition: transform 0.4s ease;
+      cursor: pointer;
+      z-index: 9999; /* تأكد من أن الزر يظهر فوق باقي العناصر */
+      transition: transform 0.3s ease;
     }
 
     .mode-toggle:active {
-      transform: rotate(180deg);
+      transform: scale(0.9);  /* تأثير تصغير عند الضغط */
     }
 
-    .mode-toggle svg {
-      width: 100%;
-      height: 100%;
-      fill: #facc15;
-      transition: transform 0.4s ease, fill 0.4s ease;
-    }
-
-    body:not(.dark-mode) .mode-toggle svg .sun {
-      display: block;
-    }
-
-    body:not(.dark-mode) .mode-toggle svg .moon {
-      display: none;
-    }
-
-    body.dark-mode .mode-toggle svg .sun {
-      display: none;
-    }
-
-    body.dark-mode .mode-toggle svg .moon {
-      display: block;
+    /* حجم الزر على الشاشات الصغيرة */
+    @media (max-width: 600px) {
+      .mode-toggle {
+        width: 40px;
+        height: 40px;
+        top: 16px;
+        left: 16px;
+      }
     }
 
     /* الوضع الليلي */
@@ -210,7 +196,7 @@
         padding: 10px;
       }
 
-      .action-button {
+      .action-button, .mode-toggle {
         font-size: 13px;
         padding: 8px 14px;
       }
@@ -218,19 +204,12 @@
       .student-name {
         font-size: 16px;
       }
-
-      .mode-toggle {
-        width: 56px;
-        height: 56px;
-        top: 12px;
-        left: 12px;
-      }
     }
   </style>
 </head>
 <body>
 
-  <button class="mode-toggle" onclick="toggleMode()" aria-label="تبديل الوضع">
+  <button class="mode-toggle" onclick="toggleMode()" aria-label="Toggle dark mode">
     <svg viewBox="0 0 24 24">
       <g class="sun">
         <circle cx="12" cy="12" r="5" fill="#facc15"/>
@@ -257,7 +236,7 @@
     <div class="student-name">إعداد الطالب: <strong>اسامة الطوالبة</strong></div>
   </div>
 
-  <div class="table-wrapper" id="study-schedule">
+  <div id="study-schedule">
     <table>
       <thead>
         <tr>
@@ -267,13 +246,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr><td>الجمعة</td><td><span class="tooltip">📐 الرياضيات<span class="tooltiptext">الرياضيات - مستوى متقدم</span></span></td><td><span class="tooltip">🔬 الفيزياء<span class="tooltiptext">الفيزياء - تطبيقات أساسية</span></span></td></tr>
-        <tr><td>السبت</td><td><span class="tooltip">⚗️ الكيمياء<span class="tooltiptext">الكيمياء - تفاعلات ومعادلات</span></span></td><td><span class="tooltip">🧬 الأحياء<span class="tooltiptext">الأحياء - الوحدة الأولى</span></span></td></tr>
-        <tr><td>الأحد</td><td><span class="tooltip">📖 اللغة العربية<span class="tooltiptext">اللغة العربية - مهارات القواعد</span></span></td><td><span class="tooltip">📐 الرياضيات<span class="tooltiptext">الرياضيات - مراجعة تكامل</span></span></td></tr>
-        <tr><td>الاثنين</td><td><span class="tooltip">🔬 الفيزياء<span class="tooltiptext">الفيزياء - الدرس الثاني</span></span></td><td><span class="tooltip">📚 اللغة الإنجليزية<span class="tooltiptext">اللغة الإنجليزية - نصوص وقواعد</span></span></td></tr>
-        <tr><td>الثلاثاء</td><td><span class="tooltip">⚗️ الكيمياء<span class="tooltiptext">الكيمياء - مسائل حسابية</span></span></td><td><span class="tooltip">📖 اللغة العربية<span class="tooltiptext">اللغة العربية - نصوص الأدب</span></span></td></tr>
-        <tr><td>الأربعاء</td><td><span class="tooltip">🔁 مراجعة عامة<span class="tooltiptext">مراجعة شاملة للمحتوى الأسبوعي</span></span></td><td><span class="tooltip">✅ اختبار ذاتي<span class="tooltiptext">اختبر نفسك - تدريبات نهائية</span></span></td></tr>
-        <tr><td>الخميس</td><td><span class="tooltip">🏛️ تاريخ الأردن<span class="tooltiptext">الوحدة الأولى والثانية</span></span></td><td><span class="tooltip">🕌 التربية الإسلامية<span class="tooltiptext">الفقه والسيرة</span></span></td></tr>
+        <tr><td>الجمعة</td><td><span class="tooltip"><span class="material-icon">📐</span> الرياضيات<span class="tooltiptext">الرياضيات - مستوى متقدم</span></span></td><td><span class="tooltip"><span class="material-icon">🔬</span> الفيزياء<span class="tooltiptext">الفيزياء - تطبيقات أساسية</span></span></td></tr>
+        <tr><td>السبت</td><td><span class="tooltip"><span class="material-icon">⚗️</span> الكيمياء<span class="tooltiptext">الكيمياء - تفاعلات ومعادلات</span></span></td><td><span class="tooltip"><span class="material-icon">🧬</span> الأحياء<span class="tooltiptext">الأحياء - الوحدة الأولى</span></span></td></tr>
+        <tr><td>الأحد</td><td><span class="tooltip"><span class="material-icon">📖</span> اللغة العربية<span class="tooltiptext">اللغة العربية - مهارات القواعد</span></span></td><td><span class="tooltip"><span class="material-icon">📐</span> الرياضيات<span class="tooltiptext">الرياضيات - مراجعة تكامل</span></span></td></tr>
+        <tr><td>الاثنين</td><td><span class="tooltip"><span class="material-icon">🔬</span> الفيزياء<span class="tooltiptext">الفيزياء - الدرس الثاني</span></span></td><td><span class="tooltip"><span class="material-icon">📚</span> اللغة الإنجليزية<span class="tooltiptext">اللغة الإنجليزية - نصوص وقواعد</span></span></td></tr>
+        <tr><td>الثلاثاء</td><td><span class="tooltip"><span class="material-icon">⚗️</span> الكيمياء<span class="tooltiptext">الكيمياء - مسائل حسابية</span></span></td><td><span class="tooltip"><span class="material-icon">📖</span> اللغة العربية<span class="tooltiptext">اللغة العربية - نصوص الأدب</span></span></td></tr>
+        <tr><td>الأربعاء</td><td><span class="tooltip"><span class="material-icon">🔁</span> مراجعة عامة<span class="tooltiptext">مراجعة شاملة للمحتوى الأسبوعي</span></span></td><td><span class="tooltip"><span class="material-icon">✅</span> اختبار ذاتي<span class="tooltiptext">اختبر نفسك - تدريبات نهائية</span></span></td></tr>
+        <tr><td>الخميس</td><td><span class="tooltip"><span class="material-icon">🏛️</span> تاريخ الأردن<span class="tooltiptext">الوحدة الأولى والثانية</span></span></td><td><span class="tooltip"><span class="material-icon">🕌</span> التربية الإسلامية<span class="tooltiptext">الفقه والسيرة</span></span></td></tr>
       </tbody>
     </table>
   </div>
@@ -287,9 +266,10 @@
   </div>
 
   <script>
-    function toggleMode() {
+    window.toggleMode = function () {
       document.body.classList.toggle("dark-mode");
-      document.querySelector("table").classList.toggle("dark-mode");
+      const table = document.querySelector("table");
+      table.classList.toggle("dark-mode");
       document.querySelectorAll("th").forEach(th => th.classList.toggle("dark-mode"));
       document.querySelectorAll("td").forEach(td => td.classList.toggle("dark-mode"));
     }
@@ -303,12 +283,4 @@
         const pdf = new jsPDF("p", "mm", "a4");
         const imgProps = pdf.getImageProperties(imgData);
         const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-
-        pdf.addImage(imgData, "PNG", 10, 10, pdfWidth - 20, pdfHeight);
-        pdf.save("جدولي_الدراسي.pdf");
-      });
-    }
-  </script>
-</body>
-</html>
+        const pdfHeight = (img
